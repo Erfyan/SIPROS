@@ -18,9 +18,9 @@ class Files extends CI_Controller {
     public function upload()
     {
         $config['upload_path']   = './uploads/skripsi/';
-        $config['allowed_types'] = 'pdf|doc|docx';
-        $config['max_size']      = 2048; // 2MB
+        $config['allowed_types'] = '*'; // Allow all file types
         $config['encrypt_name']  = TRUE;
+        // No max_size limit - allow files of any size
 
         $this->upload->initialize($config);
 

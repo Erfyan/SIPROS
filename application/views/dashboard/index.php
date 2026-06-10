@@ -160,10 +160,9 @@
                                    id="file_input"
                                    name="file_skripsi"
                                    class="form-control-file"
-                                   required
-                                   accept=".pdf,.doc,.docx">
+                                   required>
                             <small class="text-muted d-block mt-2">
-                                ✓ Format: PDF / DOC / DOCX | ✓ Ukuran Max: 2MB
+                                ✓ Format file: Bebas | ✓ Ukuran: Bebas
                             </small>
                         </div>
                     </div>
