@@ -43,8 +43,33 @@ class Files extends CI_Controller {
             ];
 
             $this->File_model->insert($data);
-            $this->session->set_flashdata('success', 'File berhasil diupload');
+            $this->session->set_flashdata('success', '✅ File berhasil diupload');
         }
+
+        redirect('index.php/dashboard');
+    }
+
+    public function delete($file_id)
+    {
+        $user_id = $this->session->userdata('user_id');
+
+        // Get file info
+        $file = $this->File_model->getById($file_id, $user_id);
+
+        if (!$file) {
+            $this->session->set_flashdata('error', '❌ File tidak ditemukan');
+            redirect('index.php/dashboard');
+        }
+
+        // Delete file from storage
+        $file_path = './' . $file->file_path;
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+
+        // Delete from database
+        $this->File_model->delete($file_id, $user_id);
+        $this->session->set_flashdata('success', '✅ File berhasil dihapus');
 
         redirect('index.php/dashboard');
     }

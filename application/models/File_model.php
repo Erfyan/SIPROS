@@ -41,4 +41,20 @@ class File_model extends CI_Model {
         return $grouped;
     }
 
+    public function getById($file_id, $user_id)
+    {
+        return $this->db
+            ->where('id', $file_id)
+            ->where('user_id', $user_id)
+            ->get('files')
+            ->row();
+    }
+
+    public function delete($file_id, $user_id)
+    {
+        return $this->db
+            ->where('id', $file_id)
+            ->where('user_id', $user_id)
+            ->delete('files');
+    }
 }

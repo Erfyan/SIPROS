@@ -207,22 +207,31 @@
                     <div class="list-group">
                         <?php foreach($files as $f): ?>
                             <div class="list-group-item glass-card d-flex justify-content-between align-items-center">
-                                <div>
+                                <div style="flex: 1;">
                                     <small class="text-muted">
                                         📄 <?= $f->nama_file ?>
                                     </small>
                                     <br>
                                     <small class="text-subtle">
-                                        Diupload: <?= date('d M Y H:i', strtotime($f->uploaded_at)) ?>
+                                        🕐 <?= date('d M Y H:i', strtotime($f->uploaded_at)) ?>
                                     </small>
                                 </div>
 
-                                <a href="<?= base_url($f->file_path) ?>"
-                                   target="_blank"
-                                   class="btn btn-sm btn-outline-warning"
-                                   data-tooltip="Unduh file">
-                                    ⬇️ Download
-                                </a>
+                                <div class="ml-3 d-flex gap-2">
+                                    <a href="<?= base_url($f->file_path) ?>"
+                                       target="_blank"
+                                       class="btn btn-sm btn-outline-warning"
+                                       data-tooltip="Unduh file">
+                                        ⬇️ Download
+                                    </a>
+
+                                    <a href="<?= base_url('index.php/files/delete/'.$f->id) ?>"
+                                       class="btn btn-sm btn-outline-danger"
+                                       onclick="return confirm('⚠️ Yakin hapus file ini? Aksi tidak bisa dibatalkan.');"
+                                       data-tooltip="Hapus file">
+                                        🗑️ Hapus
+                                    </a>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
