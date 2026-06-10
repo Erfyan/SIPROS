@@ -43,3 +43,8 @@ system/
 *.md
 
 .editorconfig
+
+# User uploaded files
+uploads/*
+!uploads/index.html
+!uploads/skripsi/index.html
