@@ -8,6 +8,9 @@
     <!-- Bootstrap 4.6 CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
 
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
@@ -18,7 +21,7 @@
     <div class="container">
 
         <a class="navbar-brand font-weight-bold text-warning" href="#">
-            ✨ SIPROS
+            <i class="fas fa-star"></i> SIPROS
         </a>
 
         <!-- Navigation Menu -->
@@ -26,17 +29,17 @@
 
             <a href="<?= base_url('index.php') ?>"
                class="btn btn-outline-warning btn-sm mr-2">
-                🏠 Home
+                <i class="fas fa-home"></i> Home
             </a>
 
             <a href="<?= base_url('index.php/about/index') ?>"
                class="btn btn-outline-warning btn-sm mr-2">
-                ℹ️ About
+                <i class="fas fa-circle-info"></i> About
             </a>
 
             <a href="<?= base_url('index.php/contact/index') ?>"
                class="btn btn-outline-warning btn-sm mr-3">
-                📧 Contact
+                <i class="fas fa-envelope"></i> Contact
             </a>
 
             <a href="<?= base_url('index.php/auth/login') ?>"
@@ -54,7 +57,7 @@
         <h1 class="hero-title mb-4">
             Kelola Progres Skripsimu<br>
             <span class="text-warning glow-text">
-                ✨ Lebih Mudah & Terstruktur
+                <i class="fas fa-star"></i> Lebih Mudah & Terstruktur
             </span>
         </h1>
 
@@ -66,7 +69,7 @@
         <div class="hero-cta">
             <a href="<?= base_url('index.php/auth/register') ?>"
                class="btn btn-warning btn-lg glow mr-3 mb-2">
-                🚀 Mulai Sekarang
+                <i class="fas fa-rocket"></i> Mulai Sekarang
             </a>
             <a href="<?= base_url('index.php/about/index') ?>"
                class="btn btn-outline-warning btn-lg mb-2">
@@ -84,7 +87,7 @@
             <!-- Feature 1: Progress -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="feature-card glass-card">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">📊</div>
+                    <div style="font-size: 3rem; margin-bottom: 15px;"><i class="fas fa-chart-bar"></i></div>
                     <h5>Pantau Progres</h5>
                     <p class="small text-muted">
                         Visualisasi setiap fase skripsi dengan progress bar yang jelas.
@@ -96,7 +99,7 @@
             <!-- Feature 2: File Management -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="feature-card glass-card">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">📁</div>
+                    <div style="font-size: 3rem; margin-bottom: 15px;"><i class="fas fa-folder"></i></div>
                     <h5>Atur File</h5>
                     <p class="small text-muted">
                         Kelola semua file skripsimu dalam satu dashboard.
@@ -108,7 +111,7 @@
             <!-- Feature 3: Notes -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="feature-card glass-card">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">📝</div>
+                    <div style="font-size: 3rem; margin-bottom: 15px;"><i class="fas fa-note-sticky"></i></div>
                     <h5>Catat Catatan</h5>
                     <p class="small text-muted">
                         Dokumentasikan revisi, feedback, dan progress.
@@ -123,25 +126,25 @@
         <div class="row justify-content-center text-center mt-5">
             <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div style="padding: 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🔒</div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;"><i class="fas fa-lock"></i></div>
                     <h6 class="text-warning">Aman & Terpercaya</h6>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div style="padding: 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">⚡</div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;"><i class="fas fa-bolt"></i></div>
                     <h6 class="text-warning">Cepat & Ringan</h6>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div style="padding: 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📱</div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;"><i class="fas fa-mobile"></i></div>
                     <h6 class="text-warning">Mobile Friendly</h6>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div style="padding: 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🎨</div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;"><i class="fas fa-palette"></i></div>
                     <h6 class="text-warning">Modern Design</h6>
                 </div>
             </div>
