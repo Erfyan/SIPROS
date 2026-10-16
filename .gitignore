@@ -51,3 +51,4 @@ system/tests/_ci_phpunit_test.sqlitedb
 uploads/*
 !uploads/index.html
 !uploads/skripsi/index.html
+.env
