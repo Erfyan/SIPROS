@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/userguide3/database/
  */
+#[\AllowDynamicProperties]
 class CI_DB_postgre_driver extends CI_DB {
 
 	/**
@@ -95,7 +96,7 @@ class CI_DB_postgre_driver extends CI_DB {
 
 		$this->hostname === '' OR $this->dsn = 'host='.$this->hostname.' ';
 
-		if ( ! empty($this->port) && ctype_digit($this->port))
+		if ( ! empty($this->port) && ctype_digit((string) $this->port))
 		{
 			$this->dsn .= 'port='.$this->port.' ';
 		}
