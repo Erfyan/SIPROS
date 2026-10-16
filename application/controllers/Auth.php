@@ -16,6 +16,12 @@ class Auth extends CI_Controller {
     {
         if ($this->input->post()) {
 
+            if (empty($this->db->conn_id)) {
+                $this->session->set_flashdata('error', 'Koneksi database belum terhubung. Silakan konfigurasi Environment Variables database di Vercel.');
+                $this->load->view('auth/register');
+                return;
+            }
+
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
@@ -39,31 +45,37 @@ class Auth extends CI_Controller {
     }
 
     /* ===== LOGIN ===== */
-public function login()
-{
-    if ($this->input->post()) {
+    public function login()
+    {
+        if ($this->input->post()) {
 
-        $user = $this->User_model->getByEmail(
-            $this->input->post('email')
-        );
+            if (empty($this->db->conn_id)) {
+                $this->session->set_flashdata('error', 'Koneksi database belum terhubung. Silakan konfigurasi Environment Variables database di Vercel.');
+                $this->load->view('auth/login');
+                return;
+            }
 
-        if ($user && password_verify($this->input->post('password'), $user->password)) {
+            $user = $this->User_model->getByEmail(
+                $this->input->post('email')
+            );
 
-            $this->session->set_userdata([
-                'user_id' => $user->id,
-                'nama'    => $user->nama,
-                'login'   => TRUE
-            ]);
+            if ($user && password_verify($this->input->post('password'), $user->password)) {
 
-            // ⬇⬇ INI YANG WAJIB ⬇⬇
-            redirect('index.php/dashboard');
+                $this->session->set_userdata([
+                    'user_id' => $user->id,
+                    'nama'    => $user->nama,
+                    'login'   => TRUE
+                ]);
+
+                // ⬇⬇ INI YANG WAJIB ⬇⬇
+                redirect('index.php/dashboard');
+            }
+
+            $this->session->set_flashdata('error', 'Email atau password salah');
         }
 
-        $this->session->set_flashdata('error', 'Email atau password salah');
+        $this->load->view('auth/login');
     }
-
-    $this->load->view('auth/login');
-}
 
     /* ===== LOGOUT ===== */
     public function logout()

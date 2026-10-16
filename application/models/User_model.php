@@ -10,6 +10,7 @@ class User_model extends CI_Model {
 
     public function getByEmail($email)
     {
-        return $this->db->get_where('users', ['email' => $email])->row();
+        $query = $this->db->get_where('users', ['email' => $email]);
+        return ($query && is_object($query)) ? $query->row() : null;
     }
 }

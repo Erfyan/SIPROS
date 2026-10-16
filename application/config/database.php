@@ -79,6 +79,7 @@ $db['default'] = array(
     'username' => getenv('DB_USER') ?: 'root',
     'password' => getenv('DB_PASS') ?: '',
     'database' => getenv('DB_NAME') ?: 'sipros',
+    'port'     => (int)(getenv('DB_PORT') ?: 3306),
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
