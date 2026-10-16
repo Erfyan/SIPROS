@@ -73,24 +73,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$driver = getenv('DB_DRIVER') ?: 'mysqli';
+
 $db['default'] = array(
     'dsn'      => '',
     'hostname' => getenv('DB_HOST') ?: 'localhost',
-    'username' => getenv('DB_USER') ?: 'root',
+    'username' => getenv('DB_USER') ?: ($driver === 'postgre' ? 'postgres' : 'root'),
     'password' => getenv('DB_PASS') ?: '',
-    'database' => getenv('DB_NAME') ?: 'sipros',
-    'port'     => (int)(getenv('DB_PORT') ?: 3306),
-    'dbdriver' => 'mysqli',
+    'database' => getenv('DB_NAME') ?: ($driver === 'postgre' ? 'postgres' : 'sipros'),
+    'port'     => (int)(getenv('DB_PORT') ?: ($driver === 'postgre' ? 5432 : 3306)),
+    'dbdriver' => $driver,
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'char_set' => 'utf8',
-    'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
+    'dbcollat' => ($driver === 'mysqli' ? 'utf8_general_ci' : ''),
+    'swap_pre' => '',
+    'encrypt'  => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
 );
+
+// PostgreSQL / Supabase specific options
+if ($driver === 'postgre') {
+    $db['default']['sslmode'] = getenv('DB_SSLMODE') ?: 'require';
+} elseif ($driver === 'pdo') {
+    $db['default']['subdriver'] = 'pgsql';
+    $db['default']['dsn'] = 'pgsql:host=' . (getenv('DB_HOST') ?: 'localhost')
+        . ';port=' . (getenv('DB_PORT') ?: 5432)
+        . ';dbname=' . (getenv('DB_NAME') ?: 'postgres')
+        . ';sslmode=' . (getenv('DB_SSLMODE') ?: 'require');
+}
