@@ -35,9 +35,10 @@ system/tests/results/
 system/tests/_ci_phpunit_test.sqlite
 system/tests/_ci_phpunit_test.sqlite3
 system/tests/_ci_phpunit_test.sqlitedb
-system/
 
 *.json
+!vercel.json
+!composer.json
 *.log
 *.txt
 *.md
